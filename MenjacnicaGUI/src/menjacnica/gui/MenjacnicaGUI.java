@@ -2,6 +2,7 @@ package menjacnica.gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.TextArea;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -59,7 +60,8 @@ public class MenjacnicaGUI extends JFrame {
 	private JMenuItem mntmDodajKurs;
 	private JMenuItem mntmObrisiKurs;
 	private JMenuItem mntmIzvrsiIzmenu;
-	private JTextArea textArea;
+	public  JTextArea textAreaStatus;
+	private MenjacnicaGUI menjacnica;
 
 	/**
 	 * Launch the application.
@@ -92,6 +94,7 @@ public class MenjacnicaGUI extends JFrame {
 		contentPane.add(getPanel(), BorderLayout.EAST);
 		contentPane.add(getScrollPane(), BorderLayout.CENTER);
 		contentPane.add(getScrollPane_1_1(), BorderLayout.SOUTH);
+		menjacnica=this;
 	}
 
 	private JPanel getPanel() {
@@ -133,6 +136,18 @@ public class MenjacnicaGUI extends JFrame {
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("Dodaj kurs");
+			btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					
+					
+					
+					DodajKursGUI dk = new DodajKursGUI(menjacnica);
+					dk.setVisible(true);
+					
+				
+				}
+			});
 		}
 		return btnNewButton;
 	}
@@ -198,7 +213,7 @@ public class MenjacnicaGUI extends JFrame {
 					open.setDialogTitle("Izaberite fajl");
 					open.showOpenDialog(open);
 					File file= open.getSelectedFile();
-					textArea.setText(textArea.getText()+" Ucitan fajl:" +  file + "\n");
+					textAreaStatus.setText(textAreaStatus.getText()+" Ucitan fajl:" +  file + "\n");
 					
 				}
 			});
@@ -216,7 +231,7 @@ public class MenjacnicaGUI extends JFrame {
 					JFileChooser save= new JFileChooser();
 					save.showSaveDialog(null);
 					
-					textArea.setText(textArea.getText()+" Ucitan fajl:" +  save + "\n");
+					textAreaStatus.setText(textAreaStatus.getText()+" Ucitan fajl:" +  save + "\n");
 					
 					
 				}
@@ -269,7 +284,7 @@ public class MenjacnicaGUI extends JFrame {
 		if (scrollPane_1 == null) {
 			scrollPane_1 = new JScrollPane();
 			scrollPane_1.setBorder(new TitledBorder(null, "Status", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-			scrollPane_1.setViewportView(getTextArea());
+			scrollPane_1.setViewportView(getTextAreaStatus());
 		}
 		return scrollPane_1;
 	}
@@ -302,6 +317,12 @@ public class MenjacnicaGUI extends JFrame {
 	private JMenuItem getMntmDodajKurs() {
 		if (mntmDodajKurs == null) {
 			mntmDodajKurs = new JMenuItem("Dodaj kurs");
+			mntmDodajKurs.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					DodajKursGUI dk = new DodajKursGUI(menjacnica);
+					dk.setVisible(true);
+				}
+			});
 		}
 		return mntmDodajKurs;
 	}
@@ -317,10 +338,17 @@ public class MenjacnicaGUI extends JFrame {
 		}
 		return mntmIzvrsiIzmenu;
 	}
-	private JTextArea getTextArea() {
-		if (textArea == null) {
-			textArea = new JTextArea();
+	private JTextArea getTextAreaStatus() {
+		if (textAreaStatus == null) {
+			textAreaStatus = new JTextArea();
 		}
-		return textArea;
+		return textAreaStatus;
 	}
+	public void area(String nesto) {
+		
+		textAreaStatus.setText(nesto);
+		
+		
+	};
+	
 }
