@@ -234,7 +234,7 @@ public class IzvrsiZamenuGUI extends JFrame {
 						transfer="Prodaja";
 					else transfer="kupovina";
 					
-					String podaci = (String)comboBoxValuta.getSelectedItem()+textFieldIznos.getText()+transfer+"\n";
+					String podaci = (String)comboBoxValuta.getSelectedItem()+" "+textFieldIznos.getText()+" "+transfer+"\n";
 				menjacnica.textAreaStatus.setText(menjacnica.textAreaStatus.getText()+podaci);
 				dispose();
 				}

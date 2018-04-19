@@ -343,12 +343,24 @@ public class MenjacnicaGUI extends JFrame {
 	private JMenuItem getMntmObrisiKurs() {
 		if (mntmObrisiKurs == null) {
 			mntmObrisiKurs = new JMenuItem("Obrisi kurs");
+			mntmObrisiKurs.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					ObrisiKursGUI ob= new ObrisiKursGUI(menjacnica);
+					ob.setVisible(true);
+				}
+			});
 		}
 		return mntmObrisiKurs;
 	}
 	private JMenuItem getMntmIzvrsiIzmenu() {
 		if (mntmIzvrsiIzmenu == null) {
 			mntmIzvrsiIzmenu = new JMenuItem("Izvrsi izmenu");
+			mntmIzvrsiIzmenu.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					IzvrsiZamenuGUI zk= new IzvrsiZamenuGUI(menjacnica);
+					zk.setVisible(true);
+				}
+			});
 		}
 		return mntmIzvrsiIzmenu;
 	}
