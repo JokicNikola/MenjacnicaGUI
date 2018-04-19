@@ -178,8 +178,9 @@ public class ObrisiKursGUI extends JFrame {
 			btnObrisi.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
-					String podaci= textFieldNaziv.getText()+textFieldSifra.getText()+textFieldProdajni.getText()+textFieldProdajni.getText()+textFieldSrednji.getText()+textFieldSkraceni.getText()+"\n";
+					String podaci= textFieldNaziv.getText()+" "+textFieldSifra.getText()+" "+textFieldProdajni.getText()+" "+textFieldProdajni.getText()+" "+textFieldSrednji.getText()+" "+textFieldSkraceni.getText()+"\n";
 					menjacnica.textAreaStatus.setText(menjacnica.textAreaStatus.getText()+podaci);
+					dispose();
 				}
 			});
 			btnObrisi.setEnabled(false);

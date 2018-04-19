@@ -39,6 +39,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import java.awt.Dimension;
+import javax.swing.border.MatteBorder;
 
 public class MenjacnicaGUI extends JFrame {
 
@@ -167,6 +168,12 @@ public class MenjacnicaGUI extends JFrame {
 	private JButton getBtnNewButton_2() {
 		if (btnNewButton_2 == null) {
 			btnNewButton_2 = new JButton("Izvrsi izmenu");
+			btnNewButton_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					IzvrsiZamenuGUI zk= new IzvrsiZamenuGUI(menjacnica);
+					zk.setVisible(true);
+				}
+			});
 		}
 		return btnNewButton_2;
 	}
@@ -348,8 +355,8 @@ public class MenjacnicaGUI extends JFrame {
 	private JTextArea getTextAreaStatus() {
 		if (textAreaStatus == null) {
 			textAreaStatus = new JTextArea();
-			textAreaStatus.setBorder(new LineBorder(new Color(0, 0, 0)));
-			textAreaStatus.setPreferredSize(new Dimension(24, 22));
+			textAreaStatus.setRows(3);
+			textAreaStatus.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		}
 		return textAreaStatus;
 	}

@@ -150,10 +150,10 @@ public class DodajKursGUI extends JFrame {
 			btnNewButton = new JButton("Dodaj");
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					String podaci= textFieldNaziv.getText()+textFieldSifra.getText()+textFieldProdajni.getText()+textFieldProdajni.getText()+textFieldSrednji.getText()+textFieldSkraceni.getText()+"\n";
+					String podaci= textFieldNaziv.getText()+" "+textFieldSifra.getText()+" "+textFieldProdajni.getText()+" "+textFieldProdajni.getText()+" "+textFieldSrednji.getText()+" "+textFieldSkraceni.getText()+"\n";
 				
 					
-				menjacnica.textAreaStatus.setText(podaci);
+				menjacnica.textAreaStatus.setText(menjacnica.textAreaStatus.getText()+podaci);
 				dispose();
 				}
 			});
