@@ -38,6 +38,7 @@ import java.io.File;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
+import java.awt.Dimension;
 
 public class MenjacnicaGUI extends JFrame {
 
@@ -154,6 +155,12 @@ public class MenjacnicaGUI extends JFrame {
 	private JButton getBtnNewButton_1() {
 		if (btnNewButton_1 == null) {
 			btnNewButton_1 = new JButton("Obrisi kurs");
+			btnNewButton_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ObrisiKursGUI ob= new ObrisiKursGUI(menjacnica);
+					ob.setVisible(true);
+				}
+			});
 		}
 		return btnNewButton_1;
 	}
@@ -341,6 +348,8 @@ public class MenjacnicaGUI extends JFrame {
 	private JTextArea getTextAreaStatus() {
 		if (textAreaStatus == null) {
 			textAreaStatus = new JTextArea();
+			textAreaStatus.setBorder(new LineBorder(new Color(0, 0, 0)));
+			textAreaStatus.setPreferredSize(new Dimension(24, 22));
 		}
 		return textAreaStatus;
 	}

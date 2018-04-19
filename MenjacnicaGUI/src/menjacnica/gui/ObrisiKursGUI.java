@@ -6,17 +6,16 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JCheckBox;
+import javax.swing.JButton;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class DodajKursGUI extends JFrame {
+public class ObrisiKursGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblNewLabel;
@@ -31,19 +30,19 @@ public class DodajKursGUI extends JFrame {
 	private JLabel lblNewLabel_5;
 	private JTextField textFieldSrednji;
 	private JTextField textFieldSkraceni;
-	private JButton btnNewButton;
-	private JButton btnNewButton_1;
+	private JCheckBox CheckBox;
+	private JButton btnOdustani;
+	private JButton btnObrisi;
+	private JLabel lblNewLabel_6;
 	private MenjacnicaGUI menjacnica;
 
-	/**
-	 * Launch the application.
-	 */
 	
 
 	/**
 	 * Create the frame.
 	 */
-	public DodajKursGUI(MenjacnicaGUI menjacnica) {
+	public ObrisiKursGUI(MenjacnicaGUI menjacnica) {
+		setTitle("Obrisi kurs");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -63,10 +62,13 @@ public class DodajKursGUI extends JFrame {
 		contentPane.add(getLblNewLabel_5());
 		contentPane.add(getTextFieldSrednji());
 		contentPane.add(getTextFieldSkraceni());
-		contentPane.add(getBtnNewButton());
-		contentPane.add(getBtnNewButton_1());
+		contentPane.add(getCheckBox());
+		contentPane.add(getLblNewLabel_6());
+		contentPane.add(getBtnObrisi());
+		contentPane.add(getBtnOdustani());
 		this.menjacnica=menjacnica;
 	}
+
 	private JLabel getLblNewLabel() {
 		if (lblNewLabel == null) {
 			lblNewLabel = new JLabel("Sifra");
@@ -95,13 +97,13 @@ public class DodajKursGUI extends JFrame {
 	}
 	private JLabel getLblNewLabel_2() {
 		if (lblNewLabel_2 == null) {
-			lblNewLabel_2 = new JLabel("Prodajni kurs");
+			lblNewLabel_2 = new JLabel("Prodajni");
 		}
 		return lblNewLabel_2;
 	}
 	private JLabel getLblNewLabel_3() {
 		if (lblNewLabel_3 == null) {
-			lblNewLabel_3 = new JLabel("Kupovni kurs");
+			lblNewLabel_3 = new JLabel("Kupovni");
 		}
 		return lblNewLabel_3;
 	}
@@ -121,7 +123,7 @@ public class DodajKursGUI extends JFrame {
 	}
 	private JLabel getLblNewLabel_4() {
 		if (lblNewLabel_4 == null) {
-			lblNewLabel_4 = new JLabel("Srednji kurs");
+			lblNewLabel_4 = new JLabel("Srednji");
 		}
 		return lblNewLabel_4;
 	}
@@ -145,30 +147,49 @@ public class DodajKursGUI extends JFrame {
 		}
 		return textFieldSkraceni;
 	}
-	private JButton getBtnNewButton() {
-		if (btnNewButton == null) {
-			btnNewButton = new JButton("Dodaj");
-			btnNewButton.addActionListener(new ActionListener() {
+	private JCheckBox getCheckBox() {
+		if (CheckBox == null) {
+			CheckBox = new JCheckBox("Zaista obrisati kurs");
+			CheckBox.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					String podaci= textFieldNaziv.getText()+textFieldSifra.getText()+textFieldProdajni.getText()+textFieldProdajni.getText()+textFieldSrednji.getText()+textFieldSkraceni.getText()+"\n";
-				
-					
-				menjacnica.textAreaStatus.setText(podaci);
-				dispose();
+				if(CheckBox.isSelected())
+					btnObrisi.setEnabled(true);
+				else btnObrisi.setEnabled(false);
 				}
 			});
+			CheckBox.setPreferredSize(new Dimension(1000, 26));
 		}
-		return btnNewButton;
+		return CheckBox;
 	}
-	private JButton getBtnNewButton_1() {
-		if (btnNewButton_1 == null) {
-			btnNewButton_1 = new JButton("Odustani");
-			btnNewButton_1.addActionListener(new ActionListener() {
+	private JButton getBtnOdustani() {
+		if (btnOdustani == null) {
+			btnOdustani = new JButton("Odustani");
+			btnOdustani.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					dispose();
 				}
 			});
 		}
-		return btnNewButton_1;
+		return btnOdustani;
+	}
+	private JButton getBtnObrisi() {
+		if (btnObrisi == null) {
+			btnObrisi = new JButton("Obrisi");
+			btnObrisi.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					String podaci= textFieldNaziv.getText()+textFieldSifra.getText()+textFieldProdajni.getText()+textFieldProdajni.getText()+textFieldSrednji.getText()+textFieldSkraceni.getText()+"\n";
+					menjacnica.textAreaStatus.setText(menjacnica.textAreaStatus.getText()+podaci);
+				}
+			});
+			btnObrisi.setEnabled(false);
+		}
+		return btnObrisi;
+	}
+	private JLabel getLblNewLabel_6() {
+		if (lblNewLabel_6 == null) {
+			lblNewLabel_6 = new JLabel("");
+		}
+		return lblNewLabel_6;
 	}
 }
